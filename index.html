@@ -465,7 +465,16 @@
     Game.prototype.endGame = function () {
       this.updateState(this.STATES.ENDED);
     };
-
+    Game.prototype.tick = function () {
+      var _this = this;
+      this.blocks[this.blocks.length - 1].tick();
+      this.stage.render();
+      requestAnimationFrame(function () {_this.tick();});
+    };
+    return Game;
+  }();
+  var game = new Game();
+ 
       
       
   </script>
